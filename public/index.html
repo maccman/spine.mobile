@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset=utf-8>
+  <title>App</title>
+  <link rel="stylesheet" href="/css/application.css" type="text/css" charset="utf-8">
+  <script src="/application.js" type="text/javascript" charset="utf-8"></script>
+  <script type="text/javascript" charset="utf-8">
+    var exports = this;
+    jQuery(function(){
+      var App = require("app");
+      exports.App = App.init({el: $("body")});      
+    });
+  </script>
+  <meta name="viewport" content="width=device-width; initial-scale=1.0; minimum-scale=1; maximum-scale=1.0; user-scalable=0;"/>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="format-detection" content="telephone=no" />
+</head>
+<body>
+  <header id="header">
+    <h1>Title</h1>
+    <button class="left">Back</button>
+  </header>
+  <div id="content">
+    <div class="item">Item 1</div>
+    <div class="item">Item 1</div>
+    <div class="item">Item 1</div>
+    <div class="item">Item 1</div>
+    <div class="item">Item 1</div>
+  </div>
+  <footer id="footer">
+    <div class="item">First</div>
+    <div class="item active">Menu</div>
+    <div class="item">Last</div>
+  </footer>
+</body>
+</html>
