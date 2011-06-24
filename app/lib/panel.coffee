@@ -1,11 +1,10 @@
-module.exports = Panel = Spine.Controller.sub
+class Panel extends Spine.Controller
   title: "Panel Title"
   hasHeader: true
   hasFooter: true
 
-  initialize: ->
-    console.log(@constructor)
-    # @constructor.initialize.apply(@)
+  constructor: ->
+    super
     @el.addClass("panel")
     @header  = $("<header />")
     @header.append($("<h2 />").html(@title))
@@ -15,38 +14,40 @@ module.exports = Panel = Spine.Controller.sub
     @append(@content)
     @append(@footer) if @hasFooter
 
-  html: -> @content.apply(@content, arguments)
+  html: -> @content.html.apply(@content, arguments)
     
-  activate: (params) ->
+  activate: (params = {}) ->
     effect = params.transition or params.trans
+    @el.addClass("active")
     @effects[effect].apply(this) if effect
-    
-  deactivate: (params) ->
+
+  deactivate: (params = {}) ->
     effect = params.transition or params.trans
-    @reverseEffects[effect].apply(this) if effect and @isActive()
+    
+    if effect
+      @reverseEffects[effect].apply(this) if @isActive()
+      @content.queueNext =>
+        @el.removeClass("active")
+    else
+      @el.removeClass("active")
 
   effects:
     left: ->
       @content.gfxSlideIn(direction: "left")
       @header.gfxSlideIn(direction: "left", fade: true)
-      @content.queueNext ->
-        @el.addClass("active")
     
     right: ->
       @content.gfxSlideIn(direction: "right")
       @header.gfxSlideIn(direction: "right", fade: true)
-      @content.queueNext ->
-        @el.addClass("active")
+
   
   reverseEffects:
     left: ->
       @content.gfxSlideOut(direction: "right")
       @header.gfxSlideOut(direction: "right", fade: true)
-      @content.queueNext ->
-        @el.removeClass("active")
     
     right: ->
       @content.gfxSlideOut(direction: "left")
       @header.gfxSlideOut(direction: "left", fade: true)
-      @content.queueNext ->
-        @el.removeClass("active")
+
+module.exports = Panel

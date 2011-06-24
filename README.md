@@ -9,5 +9,4 @@
 * Package
 * Panel Manager
 
-* Need to sort out panel elements
-* Need to sort out passing transitions to active
+* Need to fix passing transitions to active

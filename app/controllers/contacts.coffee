@@ -1,17 +1,16 @@
 Panel   = require("lib/panel")
 Contact = require("models/contact")
 
-ContactsList = Panel.sub
+class ContactsList extends Panel
   title: "Contacts"
   events:
     "click .item": "click"
 
-  proxied: ["render"]
-
-  init: ->
+  constructor: ->
+    super
     Contact.bind("change refresh", @render)
   
-  render: ->
+  render: =>
     contacts = Contact.all()
     @html require("views/contacts/list")(contacts)
     
@@ -19,12 +18,13 @@ ContactsList = Panel.sub
     item = $(e.target).item()
     @navigate("/contacts", item.id, trans: "right")
 
-ContactsItem = Panel.sub
+class ContactsItem extends Panel
   title: "Contact"
   events:
     "click .back": "back"
 
-  init: ->
+  constructor: ->
+    super
     backButton = $("<button />")
     backButton.text("Back").addClass("right back")
     @header.append(backButton)
@@ -39,17 +39,24 @@ ContactsItem = Panel.sub
     @item = item
     @render()
     
-module.exports = Contacts = Spine.Controller.sub
-  init: ->
-    @list = ContactsList.init()
-    @item = ContactsItem.init()
-    Spine.Manager.init(@list, @list)
+class Contacts extends Spine.Controller
+  constructor: ->
+    super
+    
+    @list = new ContactsList
+    @item = new ContactsItem
+    
+    new Spine.Manager(@list, @item)
     
     @append(@list, @item)
-    
+
     @routes
       "/contacts": (params) -> 
         @list.active(params)
       "/contacts/:id": (params) ->
         @item.change Contact.find(params.id)
         @item.active(params)
+        
+    @list.active()
+        
+module.exports = Contacts

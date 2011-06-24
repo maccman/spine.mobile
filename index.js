@@ -17,14 +17,14 @@ var package = stitch.createPackage({
   dependencies: [
     __dirname + '/lib/jquery.js',
     __dirname + '/lib/jquery.tmpl.js',
-    __dirname + '/lib/spine.js',
-    __dirname + '/lib/spine.tmpl.js',
-    __dirname + '/lib/spine.manager.js',
-    __dirname + '/lib/spine.ajax.js',
-    __dirname + '/lib/spine.local.js',
-    __dirname + '/lib/spine.route.js',
-    __dirname + '/lib/spine.touch.js',
-    __dirname + '/lib/gfx.js'
+    __dirname + '/lib/spine/spine.js',
+    __dirname + '/lib/spine/spine.tmpl.js',
+    __dirname + '/lib/spine/spine.manager.js',
+    __dirname + '/lib/spine/spine.ajax.js',
+    __dirname + '/lib/spine/spine.local.js',
+    __dirname + '/lib/spine/spine.route.js',
+    __dirname + '/lib/spine/spine.touch.js',
+    __dirname + '/lib/gfx/gfx.js'
   ]
 });
 

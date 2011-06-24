@@ -1,1 +1,3 @@
-Contact = module.exports = Spine.Model.setup("Contact", ["name"])
+class Contact extends (Spine.Model("Contact", "name"))
+
+module.exports = Contact
