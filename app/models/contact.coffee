@@ -1,0 +1,1 @@
+Contact = module.exports = Spine.Model.setup("Contact", ["name"])

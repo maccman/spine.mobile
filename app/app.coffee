@@ -1,15 +1,13 @@
 require("lib/gfx.ext")
 
-Panel   = require("controllers/panel")
-Manager = require("controllers/panel.manager")
+Contacts = require("controllers/contacts")
 
 module.exports = Spine.Controller.sub
+  elements:
+    "#panels": "panels"
+
   init: ->
-    @users = Users.init()
-    @place = Place.init()
+    Contacts.init(el: @panels)
     
-    Manager.init()
-      .addRow("country", "place", "venue")
-      .addRow("profile")
-    
-$.preventDefaultTouch()
+    Spine.preventDefaultTouch()
+    Spine.Route.setup(shim: true)
