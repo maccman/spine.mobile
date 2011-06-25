@@ -15,7 +15,10 @@ class Panel extends Spine.Controller
   activate: (params = {}) ->
     effect = params.transition or params.trans
     @el.addClass("active")
-    @effects[effect].apply(this) if effect
+    if effect
+      @effects[effect].apply(this)
+    else
+      @header.add(@content).css(opacity: 1, display: 'block')
 
   deactivate: (params = {}) ->
     effect = params.transition or params.trans

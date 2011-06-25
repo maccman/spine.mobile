@@ -29,10 +29,9 @@ var package = stitch.createPackage({
 
 if (argv[0] == "build") {
   return package.compile(function (err, source){
-    fs.writeFile(__dirname + '/public/application.js', source, function (err) {
-      if (err) throw err;
-      console.log('Compiled application.js');
-    })
+    source = require('uglify-js')(source)
+    fs.writeFileSync(__dirname + '/public/application.js', source);
+    util.puts('Compiled application.js');
   });
 }
 
@@ -47,5 +46,5 @@ app.configure(function() {
 });
 
 var port = argv[0] || process.env.PORT || 9294;
-util.puts("Starting server on port: " + port);
+util.puts('Starting server on port: ' + port);
 app.listen(port);
