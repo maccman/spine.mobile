@@ -22,7 +22,7 @@ header {
   position: relative;
 }
 header button {
-  margin: 7px;
+  margin: 6px;
   padding: 5px 10px;
   font-size: 13px;
   cursor: pointer;
@@ -168,6 +168,7 @@ footer .item.active, footer .item:active {
   box-flex: 1;
 }
 .list .item {
+  cursor: pointer;
   background: #F6F6F7;
   background: -webkit-gradient(linear, left top, left bottom, from(#ffffff), color-stop(0.5, rgba(255, 255, 255, 0.4)), color-stop(0.5, rgba(255, 255, 255, 0))), #f6f6f7;
   padding: 15px;

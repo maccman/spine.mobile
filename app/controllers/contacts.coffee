@@ -27,7 +27,7 @@ class ContactsItem extends Panel
   constructor: ->
     super
     backButton = $("<button />")
-    backButton.text("Back").addClass("right back")
+    backButton.text("Back").addClass("left back")
     @header.append(backButton)
     @content.addClass("fillout")
 
