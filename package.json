@@ -1,4 +1,5 @@
 {
+  "name": "spine.mobile",
   "version": "0.0.1",
   "engines": {
     "node": "*"
