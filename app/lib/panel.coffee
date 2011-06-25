@@ -1,18 +1,14 @@
 class Panel extends Spine.Controller
   title: "Panel Title"
-  hasHeader: true
-  hasFooter: true
 
   constructor: ->
     super
     @el.addClass("panel")
     @header  = $("<header />")
     @header.append($("<h2 />").html(@title))
-    @content = $("<div />")
-    @footer  = $("<footer />")
-    @append(@header) if @hasHeader
+    @content = $("<div />").addClass("content")
+    @append(@header)
     @append(@content)
-    @append(@footer) if @hasFooter
 
   html: -> @content.html.apply(@content, arguments)
     
@@ -33,21 +29,20 @@ class Panel extends Spine.Controller
 
   effects:
     left: ->
-      @content.gfxSlideIn(direction: "left")
-      @header.gfxSlideIn(direction: "left", fade: true)
+      @content.gfxSlideIn(direction: "right")
+      @header.gfxSlideIn(direction: "right", fade: true, distance: 50)
     
     right: ->
-      @content.gfxSlideIn(direction: "right")
-      @header.gfxSlideIn(direction: "right", fade: true)
-
+      @content.gfxSlideIn(direction: "left")
+      @header.gfxSlideIn(direction: "left", fade: true, distance: 50)
   
   reverseEffects:
     left: ->
-      @content.gfxSlideOut(direction: "right")
-      @header.gfxSlideOut(direction: "right", fade: true)
+      @content.gfxSlideOut(direction: "left")
+      @header.gfxSlideOut(direction: "left", fade: true, distance: 50)
     
     right: ->
-      @content.gfxSlideOut(direction: "left")
-      @header.gfxSlideOut(direction: "left", fade: true)
+      @content.gfxSlideOut(direction: "right")
+      @header.gfxSlideOut(direction: "right", fade: true, distance: 50)
 
 module.exports = Panel

@@ -15,27 +15,10 @@ button, a {
 }
 
 header {
-  height: 40px;
-  line-height: 40px;
-
   color: #292D39;
   text-shadow: 0 1px 0 #FFF;
   text-align: center;
   position: relative;
-  
-  border-bottom: 1px solid #464854;
-  .inset-box-shadow(0, 1px, 0, rgba(255, 255, 255, 0.4));
-  
-  background: #B7BBC6;
-  background: -webkit-gradient(linear, left top, left bottom,   
-                from(rgba(255, 255, 255, 0.2)), 
-                color-stop(0.5, rgba(255, 255, 255, 0.1)),
-                color-stop(0.5, rgba(255, 255, 255, 0))
-              ),  
-              -webkit-gradient(linear, left top, left bottom,   
-                from(lighten(#9A9EAC, 10%)), 
-                to(#9A9EAC)
-              );
 }
 
 header button {
@@ -62,10 +45,9 @@ header button {
   &.right { 
     position: absolute; right: 0;
   }
-  
 }
 
-header h1 {
+header h1, header h2 {
   margin: 0;
   padding: 0;
   font-size: 18px;
@@ -74,21 +56,6 @@ header h1 {
 }
 
 footer {
-  border-top: 1px solid #464854;
-  .inset-box-shadow(0, 1px, 0, rgba(255, 255, 255, 0.2));
-  
-  background: #AFB3C0;
-  background: -webkit-gradient(linear, left top, left bottom,   
-                from(rgba(255, 255, 255, 0.1)), 
-                color-stop(0.5, rgba(255, 255, 255, 0.1)),
-                color-stop(0.5, rgba(255, 255, 255, 0))
-              ), -webkit-gradient(linear, left top, left bottom,   
-                from(lighten(#AFB3C0, 13%)), 
-                to(#AFB3C0)
-              );
-  .hbox();
-  .box-pack(center);
-  
   color: #565D65;
   text-shadow: 0 1px 0 #FFF;
   font-weight: bold;
@@ -116,6 +83,24 @@ footer .item {
   top: 0;
   left: 0;
   right: 0;
+
+  height: 40px;
+  line-height: 40px;
+  
+  .border-box();
+  border-bottom: 1px solid #464854;
+  .inset-box-shadow(0, 1px, 0, rgba(255, 255, 255, 0.4));
+  
+  background: #B7BBC6;
+  background: -webkit-gradient(linear, left top, left bottom,   
+                from(rgba(255, 255, 255, 0.2)), 
+                color-stop(0.5, rgba(255, 255, 255, 0.1)),
+                color-stop(0.5, rgba(255, 255, 255, 0))
+              ),  
+              -webkit-gradient(linear, left top, left bottom,   
+                from(lighten(#9A9EAC, 10%)), 
+                to(#9A9EAC)
+              );
 }
 
 #footer {
@@ -123,13 +108,67 @@ footer .item {
   bottom: 0;
   left: 0;
   right: 0;
+  height: 40px;
+
+  .border-box();
+  border-top: 1px solid #464854;
+  .inset-box-shadow(0, 1px, 0, rgba(255, 255, 255, 0.2));
+  
+  background: #AFB3C0;
+  background: -webkit-gradient(linear, left top, left bottom,   
+                from(rgba(255, 255, 255, 0.1)), 
+                color-stop(0.5, rgba(255, 255, 255, 0.1)),
+                color-stop(0.5, rgba(255, 255, 255, 0))
+              ), -webkit-gradient(linear, left top, left bottom,   
+                from(lighten(#AFB3C0, 13%)), 
+                to(#AFB3C0)
+              );
+  .hbox();
+  .box-pack(center);
 }
 
 #content {
-  margin: 40px 0 30px 0;
+  position: absolute;
+  top: 40px;
+  bottom: 40px;
+  left: 0; right: 0;
 }
 
-#content .item {
+#content header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  height: 40px;
+  line-height: 40px;
+}
+
+.panels {
+  position: relative;
+}
+
+.panels > .panel {
+  position: absolute;
+  left: 0; right: 0;
+  top: 0; bottom: 0;
+}
+
+.panels > .panel:not(.active) {
+  display: none;
+}
+
+.panels .panel {
+  .vbox();
+  
+  .fillout { 
+    background: #F6F6F7;
+    padding: 15px;
+    .box-flex(1);
+  }
+}
+
+.list .item {
   background: #F6F6F7;
   background: -webkit-gradient(linear, left top, left bottom,   
                 from(rgba(255, 255, 255, 1)), 
@@ -150,14 +189,4 @@ footer .item {
     border-bottom: none;
     .box-shadow(0, 4px, 8px, rgba(0,0,0,0.3));
   }  
-}
-
-#panels > div:not(.active) {
-  display: none;
-}
-
-#panels > div {
-  position: absolute;
-  left: 0; right: 0;
-  top: 0; bottom: 0;
 }

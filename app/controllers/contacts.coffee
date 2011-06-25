@@ -8,6 +8,7 @@ class ContactsList extends Panel
 
   constructor: ->
     super
+    @content.addClass("list")
     Contact.bind("change refresh", @render)
   
   render: =>
@@ -28,6 +29,7 @@ class ContactsItem extends Panel
     backButton = $("<button />")
     backButton.text("Back").addClass("right back")
     @header.append(backButton)
+    @content.addClass("fillout")
 
   back: ->
     @navigate("/contacts", trans: "left")

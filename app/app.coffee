@@ -3,12 +3,12 @@ Contact  = require("models/contact")
 
 class App extends Spine.Controller
   elements:
-    "#panels": "panels"
+    "#content": "content"
 
   constructor: ->
     super
     
-    @contacts = new Contacts(el: @panels)
+    @contacts = new Contacts(el: @content)
     
     Spine.preventDefaultTouch()
     Spine.Route.setup(shim: true)
