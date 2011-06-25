@@ -1,4 +1,4 @@
-require("lib/jquery.touch.js")
+require("lib/jquery.touch")
 Contacts = require("controllers/contacts")
 Contact  = require("models/contact")
 
