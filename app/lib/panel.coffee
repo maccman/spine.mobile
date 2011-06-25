@@ -5,7 +5,7 @@ class Panel extends Spine.Controller
     super
     @el.addClass("panel")
     @header  = $("<header />")
-    @header.append($("<h2 />").html(@title))
+    @header.append($("<h2 />").html(@title)) if @title
     @content = $("<div />").addClass("content")
     @append(@header)
     @append(@content)
