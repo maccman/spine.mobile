@@ -23,7 +23,6 @@ var package = stitch.createPackage({
     __dirname + '/lib/spine/spine.ajax.js',
     __dirname + '/lib/spine/spine.local.js',
     __dirname + '/lib/spine/spine.route.js',
-    __dirname + '/lib/spine/spine.touch.js',
     __dirname + '/lib/gfx/gfx.js'
   ]
 });

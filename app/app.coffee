@@ -1,3 +1,4 @@
+require("lib/jquery.touch.js")
 Contacts = require("controllers/contacts")
 Contact  = require("models/contact")
 
@@ -10,8 +11,8 @@ class App extends Spine.Controller
     
     @contacts = new Contacts(el: @content)
     
-    Spine.preventDefaultTouch()
-    Spine.setupTouch()
+    $.preventDefaultTouch()
+    $.setupTouch()
     Spine.Route.setup(shim: true)
     
     Contact.create(name: "Alex MacCaw", email: "info@eribium.org")
