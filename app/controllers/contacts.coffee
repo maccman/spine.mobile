@@ -22,7 +22,7 @@ class ContactsList extends Panel
 class ContactsItem extends Panel
   title: "Contact"
   events:
-    "click .back": "back"
+    "tap .back": "back"
 
   constructor: ->
     super
