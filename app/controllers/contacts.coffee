@@ -4,7 +4,7 @@ Contact = require("models/contact")
 class ContactsList extends Panel
   title: "Contacts"
   events:
-    "click .item": "click"
+    "tap .item": "click"
 
   constructor: ->
     super

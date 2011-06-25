@@ -11,9 +11,10 @@ class App extends Spine.Controller
     @contacts = new Contacts(el: @content)
     
     Spine.preventDefaultTouch()
+    Spine.setupTouch()
     Spine.Route.setup(shim: true)
     
-    Contact.create(name: "Alex MacCaw")
-    Contact.create(name: "Richard MacCaw")
+    Contact.create(name: "Alex MacCaw", email: "info@eribium.org")
+    Contact.create(name: "Richard MacCaw", email: "ricci@example.com")
     
 module.exports = App

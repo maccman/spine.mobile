@@ -29,20 +29,20 @@ class Panel extends Spine.Controller
 
   effects:
     left: ->
-      @content.gfxSlideIn(direction: "right")
-      @header.gfxSlideIn(direction: "right", fade: true, distance: 50)
-    
-    right: ->
       @content.gfxSlideIn(direction: "left")
       @header.gfxSlideIn(direction: "left", fade: true, distance: 50)
+    
+    right: ->
+      @content.gfxSlideIn(direction: "right")
+      @header.gfxSlideIn(direction: "right", fade: true, distance: 50)
   
   reverseEffects:
     left: ->
-      @content.gfxSlideOut(direction: "left")
-      @header.gfxSlideOut(direction: "left", fade: true, distance: 50)
-    
-    right: ->
       @content.gfxSlideOut(direction: "right")
       @header.gfxSlideOut(direction: "right", fade: true, distance: 50)
+    
+    right: ->
+      @content.gfxSlideOut(direction: "left")
+      @header.gfxSlideOut(direction: "left", fade: true, distance: 50)
 
 module.exports = Panel
