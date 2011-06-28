@@ -27,7 +27,6 @@ $.setupTouch = ->
       $(touch.target).trigger('tap')
       touch = {}
   .bind 'touchcancel', ->
-    console.log('touchcancel') 
     touch = {}  
 
 unless $.support.touch
