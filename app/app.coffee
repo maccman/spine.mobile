@@ -15,6 +15,8 @@ class App extends Spine.Controller
     $.setupTouch()
     Spine.Route.setup(shim: true)
     
+    @navigate "/contacts"
+    
     Contact.create(name: "Alex MacCaw", email: "info@eribium.org")
     Contact.create(name: "Richard MacCaw", email: "ricci@example.com")
     
