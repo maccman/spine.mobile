@@ -3,6 +3,9 @@ Less CSS3 utils.
 */
 /* Vertical Background Gradient */
 /* Horizontal Background Gradient */
+body, html {
+  height: 100%;
+}
 body {
   font-family: Helvetica, Arial, sans-serif;
   overflow-x: hidden;
@@ -15,76 +18,20 @@ body {
 * {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
-header {
-  color: #292D39;
-  text-shadow: 0 1px 0 #FFF;
-  text-align: center;
-  position: relative;
+#stage {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: vertical;
+  -moz-box-align: stretch;
 }
-header button {
-  margin: 6px;
-  padding: 5px 10px;
-  font-size: 13px;
-  cursor: pointer;
-  font-weight: bold;
-  border: 1px solid #777A85;
-  color: #313748;
-  text-shadow: 0 1px 0 #FFF;
-  -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.08);
-  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.08);
-  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.08);
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
-  border-radius: 5px;
-  background: rgba(255, 255, 255, 0.9);
-  background: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0.9)), to(rgba(255, 255, 255, 0.2)));
-  background: -moz-linear-gradient(top, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.2));
-  background: linear-gradient(top, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.2));
-}
-header button:active {
-  -moz-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.4);
-  -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.4);
-  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.4);
-}
-header button.left {
-  position: absolute;
-  left: 0;
-}
-header button.right {
-  position: absolute;
-  right: 0;
-}
-header h1, header h2 {
-  margin: 0;
-  padding: 0;
-  font-size: 18px;
-  position: absolute;
-  left: 0;
-  right: 0;
-}
-footer {
-  color: #565D65;
-  text-shadow: 0 1px 0 #FFF;
-  font-weight: bold;
-  font-size: 15px;
-}
-footer .item {
-  width: 70px;
-  height: 25px;
-  line-height: 25px;
-  padding: 5px 0;
-  text-align: center;
-  cursor: pointer;
-  position: relative;
-}
-footer .item.active, footer .item:active {
-  background: rgba(255, 255, 255, 0.3);
+#stage > .content {
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  box-flex: 1;
 }
 #header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
   height: 40px;
   line-height: 40px;
   -webkit-box-sizing: border-box;
@@ -98,11 +45,6 @@ footer .item.active, footer .item:active {
   background: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0.2)), color-stop(0.5, rgba(255, 255, 255, 0.1)), color-stop(0.5, rgba(255, 255, 255, 0))), -webkit-gradient(linear, left top, left bottom, from(#b6b9c3), to(#9a9eac));
 }
 #footer {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 40px;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
@@ -123,36 +65,37 @@ footer .item.active, footer .item:active {
   -webkit-box-pack: center;
   -moz-box-pack: center;
   box-pack: center;
+  color: #565D65;
+  text-shadow: 0 1px 0 #FFF;
+  font-weight: bold;
+  font-size: 15px;
 }
-#content {
-  position: absolute;
-  top: 40px;
-  bottom: 40px;
-  left: 0;
-  right: 0;
-}
-#content header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 40px;
-  line-height: 40px;
-}
-.panels {
+#footer .item {
+  width: 70px;
+  height: 30px;
+  line-height: 30px;
+  padding: 5px;
+  text-align: center;
+  cursor: pointer;
   position: relative;
 }
-.panels > .panel {
+#footer .item.active, #footer .item:active {
+  background: rgba(255, 255, 255, 0.3);
+}
+.viewport {
+  position: relative;
+}
+.viewport > * {
   position: absolute;
   left: 0;
   right: 0;
   top: 0;
   bottom: 0;
 }
-.panels > .panel:not(.active) {
+.viewport > *:not(.active) {
   display: none;
 }
-.panels .panel {
+.panel {
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-box-align: stretch;
@@ -160,12 +103,88 @@ footer .item.active, footer .item:active {
   -moz-box-orient: vertical;
   -moz-box-align: stretch;
 }
-.panels .panel .fillout {
+.panel .content {
+  overflow: auto;
+}
+.panel .list {
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  box-flex: 1;
+}
+.panel .fillout {
   background: #F6F6F7;
   padding: 15px;
   -webkit-box-flex: 1;
   -moz-box-flex: 1;
   box-flex: 1;
+}
+.panel header {
+  height: 40px;
+  line-height: 40px;
+  color: #292D39;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+  text-align: center;
+  position: relative;
+  margin-top: -40px;
+}
+.panel header button {
+  margin: 6px;
+  padding: 5px 10px;
+  font-size: 13px;
+  cursor: pointer;
+  font-weight: bold;
+  border: 1px solid #777A85;
+  color: #313748;
+  text-shadow: 0 1px 0 #FFF;
+  -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.08);
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.08);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.08);
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.9);
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0.9)), to(rgba(255, 255, 255, 0.2)));
+  background: -moz-linear-gradient(top, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.2));
+  background: linear-gradient(top, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.2));
+}
+.panel header button:active {
+  -moz-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.4);
+  -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.4);
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.4);
+}
+.panel header button.left {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+.panel header button.right {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+.panel header h1, .panel header h2 {
+  padding: 0;
+  font-size: 18px;
+  margin: 0 65px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.list h3 {
+  margin: 0;
+  padding: 4px 15px;
+  color: #FFF;
+  text-shadow: 0 1px rgba(0, 0, 0, 0.5);
+  background: #9a9eac;
+  background: -webkit-gradient(linear, left top, left bottom, from(#9a9eac), to(#b6b9c3));
+  background: -moz-linear-gradient(top, #9a9eac, #b6b9c3);
+  background: linear-gradient(top, #9a9eac, #b6b9c3);
+  font-size: 16px;
+  border-top: 1px solid #70727D;
+  border-bottom: 1px solid #70727D;
+  -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4);
 }
 .list .item {
   cursor: pointer;
@@ -187,4 +206,7 @@ footer .item.active, footer .item:active {
   -moz-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
   -webkit-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+.list .item:last-child:active {
+  -webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1), 0 4px 8px rgba(0, 0, 0, 0.3);
 }

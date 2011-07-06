@@ -1,3 +1,4 @@
-class Contact extends (Spine.Model("Contact", "name", "email"))
+class Contact extends Spine.Model
+  @configure "Contact", "name", "email"
 
 module.exports = Contact

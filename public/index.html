@@ -16,9 +16,15 @@
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="format-detection" content="telephone=no" />
 </head>
-<body>
-  <header id="header"></header>
-  <div class="panels" id="content"></div>
-  <footer id="footer"></footer>
+<body class="viewport">
+  <div id="stage" class="active">
+    <header id="header"></header>
+    <div class="content viewport"></div>
+    <footer id="footer">
+      <div data-type="menu1" class="item active">Menu 1</div>
+      <div data-type="menu2" class="item">Menu 2</div>
+      <div data-type="menu3" class="item">Menu 3</div>
+    </footer>
+  </div>
 </body>
 </html>

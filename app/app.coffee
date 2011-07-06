@@ -1,15 +1,18 @@
 require("lib/jquery.touch")
+
+Stage    = require("controllers/index")
 Contacts = require("controllers/contacts")
 Contact  = require("models/contact")
 
 class App extends Spine.Controller
   elements:
-    "#content": "content"
+    "#stage": "stage"
 
   constructor: ->
     super
     
-    @contacts = new Contacts(el: @content)
+    @stage    = new Stage(el: @stage)
+    @contacts = new Contacts(stage: @stage)
     
     $.preventDefaultTouch()
     $.setupTouch()

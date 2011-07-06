@@ -1,5 +1,4 @@
 Panel   = require("lib/panel")
-Manager = require("lib/panel.manager")
 Contact = require("models/contact")
 
 class ContactsList extends Panel
@@ -42,14 +41,15 @@ class ContactsItem extends Panel
     @item = item
     @render()
     
-class Contacts extends Manager
+class Contacts extends Spine.Controller
   constructor: ->
     super
     
     @list = new ContactsList
     @item = new ContactsItem
     
-    @addPanel(@list, @item)
+    # Add to main stage
+    @stage.add(@list, @item)
 
     @routes
       "/contacts": (params) -> 
