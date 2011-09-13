@@ -1,0 +1,14 @@
+{
+  "name": "jqueryify",
+  "description": "jQuery lib for browsers",
+  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/maccman/jqueryify.git"
+  },
+  "author": "Alex MacCaw <info@eribium.org>",
+  "engines": {
+    "node": "*"
+  },
+  "main": "./index.js"
+}
