@@ -1,4 +1,5 @@
 Spine = require('spine')
+$     = Spine.$
 
 globalManager = new Spine.Manager
 
@@ -6,10 +7,37 @@ class Stage extends Spine.Controller
   @globalManager: -> globalManager
   @globalStage:   -> @globalManager().controllers[0]
   
+  effectDefaults:
+    duration: 450
+    easing: 'cubic-bezier(.25, .1, .25, 1)'
+    
+  effectOptions: (options = {})  ->
+    $.extend({}, @effectOptions, options)
+
+  viewport: true
+  
   constructor: ->
     super
-    @el.addClass('stage viewport')
+    @el.addClass('stage')
+    
+    @header  = $('<header />')
+    @content = document.createElement(@tag) unless @content
+    @content = $(@content).addClass('content')
+    @footer  = $('<footer />')
+    
+    @content.addClass('viewport') if @viewport
+    
+    @el.append(@header, @content, @footer)
     globalManager.add(@) if @global
+    
+  append: (elements...) -> 
+    elements = (e.el or e for e in elements)
+    @content.append(elements...)
+
+  html: -> 
+    @content.html.apply(@content, arguments)
+    @refreshElements()
+    @content
 
   add: (panels...) ->
     @manager or= new Spine.Manager
@@ -37,20 +65,20 @@ class Stage extends Spine.Controller
   effects:
     left: ->
       @el.addClass('active')
-      @el.gfxSlideIn(direction: 'left', duration: 300)
+      @el.gfxSlideIn(@effectOptions(direction: 'left'))
     
     right: ->
       @el.addClass('active')
-      @el.gfxSlideIn(direction: 'right', duration: 300)
+      @el.gfxSlideIn(@effectOptions(direction: 'right'))
   
   reverseEffects:
     left: ->
-      @el.gfxSlideOut(direction: 'right')
-      @el.queueNext => @el.removeClass('active', duration: 300)
+      @el.gfxSlideOut(@effectOptions(direction: 'right'))
+      @el.queueNext => @el.removeClass('active')
     
     right: ->
-      @el.gfxSlideOut(direction: 'left')
-      @el.queueNext => @el.removeClass('active', duration: 300)
+      @el.gfxSlideOut(@effectOptions(direction: 'left'))
+      @el.queueNext => @el.removeClass('active')
       
 class Stage.Global extends Stage
   global: true

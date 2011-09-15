@@ -2,26 +2,14 @@ $     = Spine.$
 Gfx   = require('gfx')
 Stage = require('./stage')
 
-merge = (options, defaults) -> 
-  $.extend({}, defaults, options)
-
 class Panel extends Stage
   title: false
-  
-  effectDefaults:
-    duration: 450
-    easing: 'cubic-bezier(.25, .1, .25, 1)'
+  viewport: false
 
   constructor: ->
     super
-    
-    @el.addClass('panel').removeClass('viewport stage')
-    @header  = $('<header />').addClass('panelHeader')
-    @header.append($('<h2 />').html(@title)) if @title
-    @content = $('<div />').addClass('content')
-
-    @append(@header, @content)
-    
+    @el.removeClass('stage').addClass('panel')
+    @header.append($('<h2 />').html(@title)) if @title    
     @stage ?= Stage.globalStage()
     @stage?.add(@)
     
@@ -31,11 +19,6 @@ class Panel extends Stage
     button.tap(@proxy(callback))
     @header.append(button)
     button
-
-  html: -> 
-    @content.html.apply(@content, arguments)
-    @refreshElements()
-    @content
   
   activate: (params = {}) ->
     effect = params.transition or params.trans
@@ -56,24 +39,24 @@ class Panel extends Stage
   effects:
     left: ->
       @el.addClass('active')
-      @content.gfxSlideIn(merge(direction: 'left', @effectDefaults))
-      @header.gfxSlideIn(merge(direction: 'left', fade: true, distance: 50, @effectDefaults))
+      @content.gfxSlideIn(@effectOptions(direction: 'left'))
+      @header.gfxSlideIn(@effectOptions(direction: 'left', fade: true, distance: 50))
     
     right: ->
       @el.addClass('active')
-      @content.gfxSlideIn(merge(direction: 'right', @effectDefaults))
-      @header.gfxSlideIn(merge(direction: 'right', fade: true, distance: 50, @effectDefaults))
+      @content.gfxSlideIn(@effectOptions(direction: 'right'))
+      @header.gfxSlideIn(@effectOptions(direction: 'right', fade: true, distance: 50))
   
   reverseEffects:
     left: ->
-      @content.gfxSlideOut(merge(direction: 'right', @effectDefaults))
-      @header.gfxSlideOut(merge(direction: 'right', fade: true, distance: 50, @effectDefaults))
+      @content.gfxSlideOut(@effectOptions(direction: 'right'))
+      @header.gfxSlideOut(@effectOptions(direction: 'right', fade: true, distance: 50))
       @content.queueNext => 
         @el.removeClass('active')
     
     right: ->
-      @content.gfxSlideOut(merge(direction: 'left', @effectDefaults))
-      @header.gfxSlideOut(merge(direction: 'left', fade: true, distance: 50, @effectDefaults))
+      @content.gfxSlideOut(@effectOptions(direction: 'left'))
+      @header.gfxSlideOut(@effectOptions(direction: 'left', fade: true, distance: 50))
       @content.queueNext => 
         @el.removeClass('active')
         
