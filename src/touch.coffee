@@ -45,7 +45,10 @@ $ ->
   .bind 'touchcancel', (e) -> 
     touch = {}
 
-unless $.support.touch
+if $.support.touch
+  $('body').bind 'click', (e) -> 
+    e.preventDefault()
+else
   $ -> 
     $('body').bind 'click', (e) -> 
       $(e.target).trigger('tap') 

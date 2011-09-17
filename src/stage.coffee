@@ -12,7 +12,7 @@ class Stage extends Spine.Controller
     easing: 'cubic-bezier(.25, .1, .25, 1)'
     
   effectOptions: (options = {})  ->
-    $.extend({}, @effectOptions, options)
+    $.extend({}, @effectDefaults, options)
 
   viewport: true
   
@@ -21,7 +21,7 @@ class Stage extends Spine.Controller
     @el.addClass('stage')
     
     @header  = $('<header />')
-    @content = document.createElement(@tag) unless @content
+    @content = document.createElement(@tag)
     @content = $(@content).addClass('content')
     @footer  = $('<footer />')
     
