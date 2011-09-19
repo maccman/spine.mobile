@@ -21,8 +21,7 @@ class Stage extends Spine.Controller
     @el.addClass('stage')
     
     @header  = $('<header />')
-    @content = document.createElement(@tag)
-    @content = $(@content).addClass('content')
+    @content = $('<article />')
     @footer  = $('<footer />')
     
     @content.addClass('viewport') if @viewport
@@ -83,4 +82,5 @@ class Stage extends Spine.Controller
 class Stage.Global extends Stage
   global: true
 
-module.exports = Stage
+exports ?= @
+exports.Stage = Stage

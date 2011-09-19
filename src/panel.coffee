@@ -60,4 +60,5 @@ class Panel extends Stage
       @content.queueNext => 
         @el.removeClass('active')
         
-module.exports = Panel
+exports ?= @
+exports.Panel = Panel
