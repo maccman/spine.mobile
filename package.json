@@ -1,7 +1,7 @@
 { 
   "name": "spine.mobile", 
   "description": "Spine Mobile MVC Framework.", 
-  "version": "0.0.5", 
+  "version": "0.0.6", 
   "author": "maccman", 
   "licenses":
     [{ 
