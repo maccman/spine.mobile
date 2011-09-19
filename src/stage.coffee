@@ -82,5 +82,4 @@ class Stage extends Spine.Controller
 class Stage.Global extends Stage
   global: true
 
-exports ?= @
-exports.Stage = Stage
+(module?.exports = Stage) or @Stage = Stage
