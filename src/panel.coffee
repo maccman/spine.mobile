@@ -9,9 +9,13 @@ class Panel extends Stage
   constructor: ->
     super
     @el.removeClass('stage').addClass('panel')
-    @header.append($('<h2 />').html(@title)) if @title    
+    @header.append($('<h2 />'))
+    @setTitle(@title) if @title
     @stage ?= Stage.globalStage()
     @stage?.add(@)
+    
+  setTitle: (title = '') ->
+    @header.find('h2:first').html(title)
     
   addButton: (text, callback) ->
     callback = @[callback] if typeof callback is 'string'
