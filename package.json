@@ -1,7 +1,7 @@
 { 
   "name": "spine.mobile", 
   "description": "Spine Mobile MVC Framework.", 
-  "version": "0.0.6", 
+  "version": "1.0.0", 
   "author": "maccman", 
   "licenses":
     [{ 
@@ -14,7 +14,7 @@
   }, 
   "main" : "./index.js",
   "dependencies" : {
-    "spine": "~0.0.5",
+    "spine": "~1.0.0",
     "gfx": "~0.0.2"
   }
 }
