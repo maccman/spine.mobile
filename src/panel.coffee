@@ -23,7 +23,15 @@ class Panel extends Stage
     button.tap(@proxy(callback))
     @header.append(button)
     button
-  
+
+  addBackButton: (url, text) ->
+    goBack = =>
+      # check for isActive, because this method gets called on every back-button-panel when the backbutton event is fired
+      @navigate(url, trans: 'left') if @isActive()
+    
+    $(document).bind "backbutton", goBack
+    @addButton text || '', goBack
+    
   activate: (params = {}) ->
     effect = params.transition or params.trans
     if effect
