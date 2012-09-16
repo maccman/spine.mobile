@@ -1,20 +1,22 @@
-{ 
-  "name": "spine.mobile", 
-  "description": "Spine Mobile MVC Framework.", 
-  "version": "1.0.0", 
-  "author": "maccman", 
-  "licenses":
-    [{ 
-      "type": "MIT", 
+{
+  "name": "spine.mobile",
+  "description": "Spine Mobile MVC Framework.",
+  "version": "1.0.0",
+  "author": "maccman",
+  "licenses": [
+    {
+      "type": "MIT",
       "url": "https://github.com/maccman/spine.mobile/blob/master/LICENSE"
-    }], 
-  "repository": { 
-    "type" : "git", 
+    }
+  ],
+  "repository": {
+    "type": "git",
     "url": "http://github.com/maccman/spine.mobile.git"
-  }, 
-  "main" : "./index.js",
-  "dependencies" : {
+  },
+  "main": "./index.js",
+  "dependencies": {
     "spine": "~1.0.0",
-    "gfx": "~0.0.2"
+    "gfx": "~0.0.2",
+    "jqueryify": "0.0.3"
   }
 }
