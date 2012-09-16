@@ -1,7 +1,7 @@
-{$} = require('spine')
+$ = require 'jqueryify'
 
 $.support.touch = ('ontouchstart' of window)
-  
+
 touch = {}
 
 parentIfText = (node) ->
@@ -10,7 +10,7 @@ parentIfText = (node) ->
 swipeDirection = (x1, x2, y1, y2) ->
   xDelta = Math.abs(x1 - x2)
   yDelta = Math.abs(y1 - y2)
-  
+
   if xDelta >= yDelta
     if x1 - x2 > 0 then 'Left' else 'Right'
   else
@@ -25,12 +25,12 @@ $ ->
     touch.x1 = e.touches[0].pageX
     touch.y1 = e.touches[0].pageY
     touch.last = now
-    
+
   .bind 'touchmove', (e) ->
     e = e.originalEvent
     touch.x2 = e.touches[0].pageX
     touch.y2 = e.touches[0].pageY
-    
+
   .bind 'touchend', (e) ->
     e = e.originalEvent
     if touch.x2 > 0 or touch.y2 > 0
@@ -41,7 +41,7 @@ $ ->
     else if 'last' of touch
       $(touch.target).trigger('tap')
       touch = {}
-      
+
   .bind 'touchcancel', (e) -> 
     touch = {}
 

@@ -1,34 +1,34 @@
-Spine = require('spine')
-$     = Spine.$
+Spine = require 'spine'
+$ = require 'jqueryify'
 
 globalManager = new Spine.Manager
 
 class Stage extends Spine.Controller
   @globalManager: -> globalManager
   @globalStage:   -> @globalManager().controllers[0]
-  
+
   effectDefaults:
     duration: 450
     easing: 'cubic-bezier(.25, .1, .25, 1)'
-    
+
   effectOptions: (options = {})  ->
     $.extend({}, @effectDefaults, options)
 
   viewport: true
-  
+
   constructor: ->
     super
     @el.addClass('stage')
-    
+
     @header  = $('<header />')
     @content = $('<article />')
     @footer  = $('<footer />')
-    
+
     @content.addClass('viewport') if @viewport
-    
+
     @el.append(@header, @content, @footer)
     globalManager.add(@) if @global
-    
+
   append: (elements...) -> 
     elements = (e.el or e for e in elements)
     @content.append(elements...)
@@ -57,7 +57,7 @@ class Stage extends Spine.Controller
       @reverseEffects[effect].apply(this)
     else
       @el.removeClass('active')
-    
+
   isActive: ->
     @el.hasClass('active')
 
@@ -65,20 +65,20 @@ class Stage extends Spine.Controller
     left: ->
       @el.addClass('active')
       @el.gfxSlideIn(@effectOptions(direction: 'left'))
-    
+
     right: ->
       @el.addClass('active')
       @el.gfxSlideIn(@effectOptions(direction: 'right'))
-  
+
   reverseEffects:
     left: ->
       @el.gfxSlideOut(@effectOptions(direction: 'right'))
       @el.queueNext => @el.removeClass('active')
-    
+
     right: ->
       @el.gfxSlideOut(@effectOptions(direction: 'left'))
       @el.queueNext => @el.removeClass('active')
-      
+
 class Stage.Global extends Stage
   global: true
 
